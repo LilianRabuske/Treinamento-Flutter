@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:register/components/global.title.dart';
+import 'package:register/components/icon.back.dart';
 import 'package:register/pages/login.page.dart';
 import 'package:register/util/color.util.dart';
-
 
 import 'dart:developer' as developer;
 
@@ -62,209 +63,195 @@ class _RegisterPageState extends State<RegisterPage> {
       name: runtimeType.toString(),
     );
 
-      Navigator.pushNamed(context,'/verification'
-      );
+    Navigator.pushNamed(context, '/verification');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.fromLTRB(30, 24, 30, 30),
-            color: Colors.white,
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const Text(
-                    'Register',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontStyle: FontStyle.italic,
-                      fontSize: 34,
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(30, 24, 30, 30),
+          color: Colors.white,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                IconBack(),
+                GlobalTitle(text: "Register"),
+                TextFormField(
+                  cursorColor: ColorUtils.red,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'Full Name',
+                    labelStyle: TextStyle(
+                      color: ColorUtils.gray,
+                      fontSize: 16,
                     ),
                   ),
-                  const SizedBox(height: 32),
-                  TextFormField(
-                    cursorColor: ColorUtils.red,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      labelText: 'Full Name',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      ),
-                    ),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: ColorUtils.black,
-                      fontSize: 20.0,
-                    ),
-                    controller: _nameController,
-                    validator: (value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Enter your name';
-                      }
-                      return null;
-                    },
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: ColorUtils.black,
+                    fontSize: 20.0,
                   ),
-                  TextFormField(
-                    cursorColor: ColorUtils.red,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      labelText: 'Email Address',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      ),
+                  controller: _nameController,
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return 'Enter your name';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  cursorColor: ColorUtils.red,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: 'Email Address',
+                    labelStyle: TextStyle(
+                      color: ColorUtils.gray,
+                      fontSize: 16,
                     ),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: ColorUtils.black,
-                      fontSize: 20.0,
-                    ),
-                    controller: _emailController,
-                    validator: (value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Enter your email';
-                      }
-                      return null;
-                    },
                   ),
-                  TextFormField(
-                    cursorColor: ColorUtils.red,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      labelText: 'Mobile number',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      ),
-                    ),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: ColorUtils.black, fontSize: 20.0),
-                    controller: _mobileController,
-                    validator: (value) {
-                      if (value?.isEmpty ?? false) {
-                        return 'Enter your phone number';
-                      }
-                      return null;
-                    },
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: ColorUtils.black,
+                    fontSize: 20.0,
                   ),
-                  TextFormField(
-                    cursorColor: ColorUtils.red,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      labelText: 'Country',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      ),
+                  controller: _emailController,
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return 'Enter your email';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  cursorColor: ColorUtils.red,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Mobile number',
+                    labelStyle: TextStyle(
+                      color: ColorUtils.gray,
+                      fontSize: 16,
                     ),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: ColorUtils.black, fontSize: 20.0),
-                    controller: _countryController,
-                    validator: (value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Enter your contry';
-                      }
-                      return null;
-                    },
                   ),
-                  TextFormField(
-                    cursorColor: ColorUtils.red,
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      ),
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: ColorUtils.black, fontSize: 20.0),
+                  controller: _mobileController,
+                  validator: (value) {
+                    if (value?.isEmpty ?? false) {
+                      return 'Enter your phone number';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  cursorColor: ColorUtils.red,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'Country',
+                    labelStyle: TextStyle(
+                      color: ColorUtils.gray,
+                      fontSize: 16,
                     ),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: ColorUtils.black, fontSize: 20.0),
-                    controller: _passwordController,
-                    validator: (value) {
-                      if (value != null &&
-                          (value.isEmpty || value.length < 6)) {
-                        return 'Enter a valid password';
-                      }
-                      return null;
-                    },
                   ),
-                  TextFormField(
-                    cursorColor: ColorUtils.red,
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      ),
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: ColorUtils.black, fontSize: 20.0),
+                  controller: _countryController,
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return 'Enter your contry';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  cursorColor: ColorUtils.red,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                      color: ColorUtils.gray,
+                      fontSize: 16,
                     ),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: ColorUtils.black, fontSize: 20.0),
-                    controller: _passwordConfirmationController,
-                    validator: (value) {
-                      if (value != _passwordController.text) {
-                        return 'Passwords do not match';
-                      }
-                      return null;
-                    },
                   ),
-                  TextFormField(
-                    cursorColor: ColorUtils.red,
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Referal Code (Optional)',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      ),
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: ColorUtils.black, fontSize: 20.0),
+                  controller: _passwordController,
+                  validator: (value) {
+                    if (value != null && (value.isEmpty || value.length < 6)) {
+                      return 'Enter a valid password';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  cursorColor: ColorUtils.red,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                      color: ColorUtils.gray,
+                      fontSize: 16,
                     ),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: ColorUtils.black, fontSize: 20.0),
-                    controller: _referalCodeController,
-                    validator: (value) {
-                      return null;
-                    },
                   ),
-                  const SizedBox(height: 24),
-                  CupertinoButton(
-                    onPressed: _register,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: ColorUtils.red,
-                      ),
-                      width: double.infinity,
-                      height: 50,
-                      child: const Center(
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontStyle: FontStyle.italic,
-                            fontSize: 18,
-                          ),
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: ColorUtils.black, fontSize: 20.0),
+                  controller: _passwordConfirmationController,
+                  validator: (value) {
+                    if (value != _passwordController.text) {
+                      return 'Passwords do not match';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  cursorColor: ColorUtils.red,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Referal Code (Optional)',
+                    labelStyle: TextStyle(
+                      color: ColorUtils.gray,
+                      fontSize: 16,
+                    ),
+                  ),
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: ColorUtils.black, fontSize: 20.0),
+                  controller: _referalCodeController,
+                  validator: (value) {
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 24),
+                CupertinoButton(
+                  onPressed: () => {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: ColorUtils.red,
+                    ),
+                    width: double.infinity,
+                    height: 50,
+                    child: const Center(
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 18,
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
+        ),
       ),
     );
   }

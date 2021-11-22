@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:register/components/global.title.dart';
 import 'package:register/util/color.util.dart';
 
 
@@ -84,14 +85,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Text(
-                  'Login',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 34,
-                  ),
-                ),
+              GlobalTitle(text: "Login"),
                 const SizedBox(height: 32),
                 TextFormField(
                   cursorColor: ColorUtils.red,

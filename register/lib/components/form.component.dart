@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:register/util/color.util.dart';
 
 class FormVerification extends StatelessWidget {
@@ -8,19 +9,18 @@ class FormVerification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(children: [
-      TextFormField(
-          cursorColor: ColorUtils.red,
+        margin: EdgeInsets.only(top: 10, bottom: 20),
+        child: VerificationCode(
+          textStyle: TextStyle(fontSize: 20.0, color: ColorUtils.black),
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-                      labelText: 'Mobile number',
-                      labelStyle: TextStyle(
-                        color: ColorUtils.gray,
-                        fontSize: 16,
-                      )
-          ),
-          textAlign: TextAlign.start,
-          style: TextStyle(color: ColorUtils.black, fontSize: 20.0))
-    ]));
+          // in case underline color is null it will use primaryColor: Colors.red from Theme
+          underlineColor: ColorUtils.red,
+          length: 4,
+          // clearAll is NOT required, you can delete it
+          // takes any widget, so you can implement your design
+
+          onCompleted: (String value) {},
+          onEditing: (bool value) {},
+        ));
   }
 }
