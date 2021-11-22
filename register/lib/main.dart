@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:register/pages/register.page.dart';
+import 'package:register/pages/login.page.dart';
+import 'package:register/pages/verification.page.dart';
 import 'package:register/util/color.util.dart';
 
 void main() {
@@ -17,7 +19,10 @@ class MyApp extends StatelessWidget {
         primaryColor: ColorUtils.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const RegisterPage(),
+      routes: {
+        "/":(context) => LoginPage(),
+        "/register":(context) => RegisterPage(),
+        "/verification":(context) => VerificationPage()}
     );
   }
 }

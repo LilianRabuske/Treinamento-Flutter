@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:register/pages/login.page.dart';
 import 'package:register/util/color.util.dart';
 
 
@@ -61,28 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
       name: runtimeType.toString(),
     );
 
-      return showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              'Formulário inválido',
-              style: TextStyle(
-                color: ColorUtils.darkGray,
-              ),
-            ),
-            content: Container(
-              height: 40,
-              width: 100,
-              child: Text(
-                'Preencha os campos corretamente',
-                style: TextStyle(
-                  color: ColorUtils.darkGray,
-                ),
-              ),
-            ),
-          );
-        },
+      Navigator.pushNamed(context,'/verification'
       );
   }
 
